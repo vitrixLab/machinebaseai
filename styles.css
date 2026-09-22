@@ -1,1 +1,881 @@
-:root{--bg:#020813;--panel:#071526;--cyan:#19d9ff;--blue:#087cff;--text:#f7fbff;--muted:#a9bdd2}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 50% 0,#07214a 0,#020813 38%);color:var(--text);font-family:Arial,Helvetica,sans-serif}a{color:inherit;text-decoration:none}header{height:78px;position:fixed;z-index:10;top:0;left:0;right:0;display:flex;align-items:center;gap:28px;padding:10px 5vw;background:rgba(1,7,16,.82);backdrop-filter:blur(14px);border-bottom:1px solid #12304c}.brand{display:flex;align-items:center;gap:12px;font-weight:900;letter-spacing:1px;margin-right:auto}.brand img{width:50px;height:50px;border-radius:50%;object-fit:cover}.brand b,.hero span,.eyebrow{color:var(--cyan)}nav{display:flex;gap:25px;color:#cfe5f7}.btn{display:inline-block;border:0;border-radius:6px;padding:15px 20px;background:linear-gradient(90deg,var(--blue),var(--cyan));color:#fff;font-weight:900;letter-spacing:.4px;cursor:pointer;box-shadow:0 0 24px rgba(25,217,255,.2)}.btn.small{padding:11px 15px}.btn.ghost{background:rgba(4,18,34,.7);border:1px solid #1e79a7}.hero{min-height:790px;padding:160px 7vw 80px;display:flex;align-items:center;position:relative;background:url('assets/hero.jpeg') center/cover no-repeat}.shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,4,12,.93) 0%,rgba(0,6,16,.70) 45%,rgba(0,7,18,.30) 100%)}.heroContent{position:relative;max-width:850px}.eyebrow{font-weight:900;letter-spacing:4px;font-size:14px}.hero h1{font-size:clamp(48px,7vw,92px);line-height:.98;margin:18px 0 24px;letter-spacing:-3px}.lead{font-size:21px;line-height:1.55;color:#c4d7e8;max-width:760px}.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}.section{padding:95px 7vw;max-width:1500px;margin:auto}.section h2{font-size:clamp(36px,5vw,62px);margin:12px 0 40px;max-width:950px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.grid article,.steps>div{padding:28px;border:1px solid #123b5d;background:linear-gradient(145deg,rgba(10,31,54,.86),rgba(2,11,22,.9));box-shadow:inset 0 1px rgba(255,255,255,.04)}h3{font-size:22px;margin:5px 0 12px}.grid p,.steps p,.privacy{color:var(--muted);line-height:1.55}.dark{border-top:1px solid #0c2d49;border-bottom:1px solid #0c2d49}.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.steps b{font-size:34px;color:var(--cyan)}.contact{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}.contact form{padding:30px;background:#061425;border:1px solid #144365;box-shadow:0 0 60px rgba(0,119,255,.12)}label{display:block;color:#cfe5f7;font-weight:700;margin-bottom:15px}input,select,textarea{width:100%;margin-top:7px;padding:14px;border-radius:4px;border:1px solid #1b4564;background:#020b16;color:#fff;font-size:16px}textarea{resize:vertical}.hp{position:absolute;left:-9999px}form .btn{width:100%;font-size:16px}footer{display:flex;align-items:center;gap:18px;justify-content:center;text-align:left;padding:40px 7vw;border-top:1px solid #103450;color:#9fb8cc}footer img{width:64px;height:64px;border-radius:50%}footer p:last-child{margin-left:auto}@media(max-width:900px){nav{display:none}.hero{min-height:700px}.grid{grid-template-columns:1fr}.steps{grid-template-columns:1fr 1fr}.contact{grid-template-columns:1fr}.hero h1{letter-spacing:-2px}footer{flex-wrap:wrap}footer p:last-child{margin-left:0;width:100%;text-align:center}}@media(max-width:560px){header{padding:8px 4vw}.brand span{font-size:14px}.btn.small{display:none}.hero{padding:130px 5vw 60px;background-position:center}.hero h1{font-size:48px}.lead{font-size:18px}.actions .btn{width:100%;text-align:center}.section{padding:70px 5vw}.steps{grid-template-columns:1fr}}
+/* ─── Design direction — Machine Base AI ────────────────────────────────────
+   Brand:      Machine Base AI — Intelligence Infrastructure
+   Product:    B2B AI infrastructure agency (not SaaS). Converts via audit form.
+   Personality: Authoritative, precise, direct. "We build production systems."
+   Palette:    Deep navy #020813 → electric cyan #19d9ff + blue #087cff accent
+   Font:       Plus Jakarta Sans — warm geometric, 400–800
+   3D focal:   tier3.js (Three.js WebGL workflow universe) — kept exactly as-is
+   Motion:     Float/pulse in CSS Intelligence Field (existing) + scroll reveals
+               Border glow on solutions cards (pointer-tracking, R-13)
+   Antislop:   skills/antislop-ui SKILL.md + patterns/ applied throughout
+   ─────────────────────────────────────────────────────────────────────────── */
+
+/* ─── Tokens ─────────────────────────────────────────────────────────────── */
+:root {
+  --bg:            #020813;
+  --panel:         #071526;
+  --surface:       #04101f;
+  --text:          #f0f6ff;
+  --muted:         #8caabb;  /* 4.65:1 on #020813 — WCAG AA */
+  --line:          #0c2d49;
+  --cyan:          #19d9ff;
+  --blue:          #087cff;
+  --primary-light: rgba(25,217,255,0.10);
+  --primary-glow:  rgba(25,217,255,0.18);
+
+  --font: 'Plus Jakarta Sans', ui-sans-serif, system-ui, -apple-system, sans-serif;
+
+  --radius-small:  4px;
+  --radius-medium: 8px;
+  --radius-large:  16px;
+
+  --text-xs:   0.75rem;
+  --text-sm:   0.875rem;
+  --text-base: 1rem;
+  --text-md:   1.125rem;
+  --text-lg:   1.25rem;
+  --text-xl:   1.5rem;
+  --text-2xl:  2rem;
+  --text-3xl:  2.75rem;
+  --text-hero: clamp(2.875rem, 7vw, 5.75rem);
+
+  --weight-normal:   400;
+  --weight-medium:   500;
+  --weight-semibold: 600;
+  --weight-bold:     700;
+  --weight-black:    800;
+
+  --lh-tight:   1.15;
+  --lh-snug:    1.35;
+  --lh-normal:  1.55;
+  --lh-relaxed: 1.65;
+  --lh-loose:   1.75;
+
+  --ls-hero:    -0.04em;
+  --ls-tight:   -0.02em;
+  --ls-label:   0.1em;
+  --ls-normal:  0;
+}
+
+/* ─── Reset / base ───────────────────────────────────────────────────────── */
+html { scroll-behavior: smooth }
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: var(--text-base);
+  line-height: var(--lh-relaxed);
+  font-weight: var(--weight-normal);
+}
+a { color: inherit; text-decoration: none }
+a:focus-visible { outline: 2px solid var(--cyan); outline-offset: 4px }
+::selection { background: var(--cyan); color: var(--bg) }
+
+/* ─── Skip link ──────────────────────────────────────────────────────────── */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  padding: .5rem 1rem;
+  background: var(--cyan);
+  color: var(--bg);
+  border-radius: var(--radius-small);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-bold);
+  z-index: 9999;
+  transition: top .15s ease;
+}
+.skip-link:focus { top: .75rem }
+
+/* ─── Layout ─────────────────────────────────────────────────────────────── */
+.wrap { max-width: 1200px; margin: auto; padding: 0 6vw }
+
+/* ─── Navigation ─────────────────────────────────────────────────────────── */
+header {
+  height: 72px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 0 6vw;
+  background: rgba(2,8,19,0.88);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--line);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-right: auto;
+  flex-shrink: 0;
+}
+.brand img {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+.brand-name {
+  font-weight: var(--weight-black);
+  font-size: var(--text-sm);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  line-height: 1;
+}
+.brand-name b { color: var(--cyan) }
+
+nav {
+  display: flex;
+  gap: .25rem;
+  align-items: center;
+}
+nav a {
+  padding: .4rem .75rem;
+  border-radius: var(--radius-small);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: var(--ls-label);
+  color: var(--muted);
+  transition: color .2s ease, background .2s ease;
+}
+nav a:hover { color: var(--text); background: var(--primary-light) }
+nav a:focus-visible { outline: 2px solid var(--cyan); outline-offset: 4px }
+
+/* ─── Buttons ─────────────────────────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: var(--radius-medium);
+  padding: .85rem 1.625rem;
+  font-family: var(--font);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-bold);
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  cursor: pointer;
+  transition: transform .15s ease, box-shadow .15s ease, background .2s ease, border-color .2s ease;
+  text-decoration: none;
+}
+.btn--small { padding: .55rem 1rem; font-size: var(--text-xs) }
+.btn--full   { width: 100% }
+
+/* Primary: cyan-to-blue gradient — brand primary CTA */
+.btn--primary {
+  background: linear-gradient(90deg, var(--blue), var(--cyan));
+  color: var(--bg);
+  box-shadow: 0 0 28px rgba(25,217,255,0.22);
+}
+.btn--primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 40px rgba(25,217,255,0.35);
+}
+.btn--primary:focus-visible { outline: 2px solid var(--cyan); outline-offset: 4px }
+
+/* Ghost: dark fill, cyan border */
+.btn--ghost {
+  background: rgba(4,18,34,0.7);
+  color: var(--text);
+  border: 1px solid rgba(25,217,255,0.3);
+}
+.btn--ghost:hover {
+  border-color: var(--cyan);
+  color: var(--cyan);
+  transform: translateY(-1px);
+}
+.btn--ghost:focus-visible { outline: 2px solid var(--cyan); outline-offset: 4px }
+
+/* ─── Eyebrow label ──────────────────────────────────────────────────────── */
+/* Plain text span, no pill/badge shape. Colour + uppercase does the work. (R-09) */
+.eyebrow {
+  color: var(--cyan);
+  font-weight: var(--weight-bold);
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: var(--ls-label);
+  display: block;
+  margin-bottom: .875rem;
+  line-height: var(--lh-normal);
+}
+
+/* ─── Scroll reveal ──────────────────────────────────────────────────────── */
+/* Purpose: guides attention per section. GPU-composited (opacity + transform). (R-19) */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity .65s ease, transform .65s ease;
+}
+[data-reveal].revealed { opacity: 1; transform: translateY(0) }
+[data-reveal][data-delay="1"] { transition-delay: .12s }
+[data-reveal][data-delay="2"] { transition-delay: .24s }
+[data-reveal][data-delay="3"] { transition-delay: .36s }
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] { opacity: 1; transform: none; transition: none; transition-delay: 0s }
+}
+
+/* ─── Hero ────────────────────────────────────────────────────────────────── */
+/* Three.js canvas (tier3.js) is the 3D focal point — the real product concept
+   made visible. Design role: full-bleed cinematic layer behind the text column.
+   DO NOT remove or resize the canvas. It was built for this layout. (R-22, C-5) */
+.hero {
+  min-height: 100vh;
+  min-height: 100svh;
+  padding: 160px 6vw 100px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Gradient overlay — left-to-right so text column is readable over the canvas */
+.shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(2,8,19,0.95) 0%,
+    rgba(2,8,19,0.78) 42%,
+    rgba(2,8,19,0.22) 100%
+  );
+  z-index: 3;
+}
+
+.heroContent {
+  position: relative;
+  z-index: 4;
+  max-width: 680px;
+}
+
+.hero h1 {
+  font-size: var(--text-hero);
+  font-weight: var(--weight-black);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-hero);
+  margin: .25rem 0 1.5rem;
+  color: var(--text);
+}
+.hero h1 span { color: var(--cyan) }
+
+.hero .lead {
+  font-size: clamp(var(--text-base), 1.8vw, var(--text-md));
+  color: var(--muted);
+  max-width: 52ch;
+  margin: 0 0 2.25rem;
+  line-height: var(--lh-loose);
+}
+
+.actions {
+  display: flex;
+  gap: .875rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+/* Canvas and Intelligence Field layers (existing — do not change) */
+#tier3Canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+  opacity: .9;
+}
+.intelligenceField {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  background: radial-gradient(circle at 72% 50%, rgba(25,217,255,.08), transparent 24%);
+  z-index: 2;
+}
+.intelligenceField::before {
+  content: "";
+  position: absolute;
+  width: 420px; height: 420px;
+  left: 68%; top: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid rgba(25,217,255,.18);
+  border-radius: 50%;
+  box-shadow: 0 0 80px rgba(25,217,255,.13), inset 0 0 70px rgba(8,124,255,.08);
+  animation: corePulse 5s ease-in-out infinite;
+}
+.aiCore {
+  position: absolute;
+  left: 68%; top: 50%;
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  background: var(--cyan);
+  box-shadow: 0 0 20px var(--cyan), 0 0 65px rgba(25,217,255,.75);
+  animation: coreFloat 4s ease-in-out infinite;
+}
+.signal {
+  position: absolute;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: #d9f9ff;
+  box-shadow: 0 0 14px var(--cyan);
+  animation: signalFloat var(--d) ease-in-out infinite alternate;
+}
+.signal::after {
+  content: "";
+  position: absolute;
+  top: 50%; left: 50%;
+  width: var(--line); height: 1px;
+  background: linear-gradient(90deg, rgba(25,217,255,.7), transparent);
+  transform-origin: left;
+  transform: rotate(var(--r));
+  opacity: .65;
+}
+.s1 { left: 56%; top: 30%; --d: 4.5s; --line: 170px; --r: 32deg }
+.s2 { left: 82%; top: 34%; --d: 5.4s; --line: 150px; --r: 145deg }
+.s3 { left: 78%; top: 67%; --d: 4.1s; --line: 130px; --r: 220deg }
+.s4 { left: 58%; top: 73%; --d: 5.8s; --line: 145px; --r: 300deg }
+.s5 { left: 91%; top: 52%; --d: 3.9s; --line: 110px; --r: 180deg }
+.s6 { left: 48%; top: 51%; --d: 6s;   --line: 120px; --r: 0deg }
+
+@keyframes corePulse {
+  0%, 100% { transform: translate(-50%, -50%) scale(.82); opacity: .35 }
+  50%       { transform: translate(-50%, -50%) scale(1.12); opacity: 1 }
+}
+@keyframes coreFloat {
+  0%, 100% { transform: translateY(-8px) scale(.9) }
+  50%       { transform: translateY(8px) scale(1.15) }
+}
+@keyframes signalFloat {
+  to { transform: translate(14px, -18px); opacity: .45 }
+}
+@media (prefers-reduced-motion: reduce) {
+  .intelligenceField::before,
+  .aiCore,
+  .signal { animation: none }
+}
+
+/* ─── Highlights strip ───────────────────────────────────────────────────── */
+/* Four real facts about the service. No invented deltas. (R-17, R-38)
+   Sits on --surface (one step above --bg) as a visual break after the hero. */
+.highlights-strip {
+  background: var(--surface);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 4rem 0;
+}
+.highlights-inner {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
+  align-items: center;
+  gap: 2rem;
+}
+.highlight { text-align: center }
+.highlight-num {
+  font-size: clamp(var(--text-2xl), 4vw, 3.25rem);
+  font-weight: var(--weight-black);
+  letter-spacing: var(--ls-hero);
+  color: var(--cyan);
+  line-height: 1;
+  margin-bottom: .5rem;
+}
+.highlight-label {
+  font-size: var(--text-sm);
+  color: var(--muted);
+  line-height: var(--lh-normal);
+}
+.highlight-divider {
+  width: 1px;
+  height: 48px;
+  background: var(--line);
+}
+
+/* ─── Generic section wrapper ────────────────────────────────────────────── */
+.section { padding: 6rem 0 }
+.section-head { margin-bottom: 3.5rem }
+.section-head h2 {
+  font-size: clamp(var(--text-2xl), 3.5vw, var(--text-3xl));
+  font-weight: var(--weight-black);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--ls-tight);
+  margin: 0 0 .875rem;
+}
+.section-sub {
+  font-size: var(--text-base);
+  color: var(--muted);
+  max-width: 52ch;
+  margin: 0;
+  line-height: var(--lh-loose);
+}
+
+/* ─── Solutions grid ─────────────────────────────────────────────────────── */
+.solutions-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+/* First card spans full width — AI Agents is the flagship offering */
+.sol-card--featured { grid-column: 1 / -1 }
+
+/* ─── Solutions cards + border glow ──────────────────────────────────────── */
+/* Border glow applied to solutions cards (one section, R-13).
+   Technique: conic-gradient lamp — horizonx.so/tools/border-glow. */
+.sol-card {
+  background: var(--panel);
+  border: 1px solid transparent;
+  background-clip: padding-box;
+  border-radius: var(--radius-medium);
+  padding: 1.75rem;
+  position: relative;
+  transition: background-color .2s ease;
+}
+.sol-card:hover { background-color: var(--surface) }
+.sol-card:focus-visible { outline: 2px solid var(--cyan); outline-offset: 4px }
+
+.border-glow-layer {
+  position: absolute;
+  inset: -1px;
+  border-radius: calc(var(--radius-medium) + 1px);
+  pointer-events: none;
+  background: conic-gradient(
+    from calc(var(--bg-angle, 0deg) - 30deg) at 50% 50%,
+    transparent 0deg,
+    var(--cyan) 60deg,
+    transparent 120deg
+  );
+  opacity: 0;
+  transition: opacity .3s ease;
+  z-index: 0;
+}
+.border-glow-inner {
+  position: absolute;
+  inset: 1px;
+  border-radius: var(--radius-medium);
+  background: var(--panel);
+  transition: background .2s ease;
+  z-index: 0;
+}
+.sol-card > :not(.border-glow-layer):not(.border-glow-inner) {
+  position: relative;
+  z-index: 1;
+}
+.sol-card:hover .border-glow-layer,
+.sol-card:focus-visible .border-glow-layer { opacity: 1 }
+.sol-card:hover .border-glow-inner { background: var(--surface) }
+.sol-card:focus-visible .border-glow-layer { opacity: 0.7 }
+
+.sol-icon {
+  font-size: 1.5rem;
+  color: var(--cyan);
+  margin-bottom: .875rem;
+  line-height: 1;
+}
+.sol-card h3 {
+  font-size: var(--text-md);
+  font-weight: var(--weight-bold);
+  color: var(--text);
+  margin: 0 0 .5rem;
+  line-height: var(--lh-snug);
+}
+.sol-card p {
+  color: var(--muted);
+  font-size: var(--text-base);
+  line-height: var(--lh-loose);
+  margin: 0;
+}
+.sol-card--featured h3 { font-size: var(--text-lg); font-weight: var(--weight-black) }
+
+/* ─── Storytelling pairs (Machine Base Method) ───────────────────────────── */
+/* Four alternating text+visual pairs. RHYTHM 2: layout varies per pair. (R-05) */
+.story-section { padding: 0 }
+.story-section .section-head {
+  padding: 6rem 0 4rem;
+  border-bottom: 1px solid var(--line);
+}
+.story-section .section-head h2 {
+  font-size: clamp(var(--text-2xl), 3.5vw, var(--text-3xl));
+  font-weight: var(--weight-black);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--ls-tight);
+  margin: 0 0 .875rem;
+}
+
+.story-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+  padding: 5rem 0;
+  border-bottom: 1px solid var(--line);
+}
+.story-pair:last-child { border-bottom: none }
+/* Flip: visual left / text right — DOM order preserved for screen readers (R-32) */
+.story-pair--flip .story-text   { order: 2 }
+.story-pair--flip .story-visual { order: 1 }
+
+.story-num {
+  font-size: var(--text-xs);
+  font-weight: var(--weight-black);
+  letter-spacing: var(--ls-label);
+  color: var(--cyan);
+  text-transform: uppercase;
+  margin-bottom: .75rem;
+}
+.story-text h3 {
+  font-size: clamp(var(--text-xl), 2.5vw, var(--text-2xl));
+  font-weight: var(--weight-black);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--ls-tight);
+  margin: 0 0 1rem;
+  color: var(--text);
+}
+.story-text p {
+  font-size: var(--text-base);
+  color: var(--muted);
+  line-height: var(--lh-loose);
+  margin: 0;
+  max-width: 44ch;
+}
+.story-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 220px;
+}
+
+/* ── Visual 1: Channel grid ── */
+.sv-channels {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: .625rem;
+  width: 100%;
+  max-width: 300px;
+}
+.sv-channel {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  padding: .625rem .875rem;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-medium);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  color: var(--muted);
+}
+.sv-channel--active { border-color: rgba(25,217,255,0.35); color: var(--text) }
+.sv-channel-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--line);
+  flex-shrink: 0;
+}
+.sv-channel--active .sv-channel-dot { background: var(--cyan) }
+
+/* ── Visual 2: AI Agent ring (identity motif — active system) ── */
+/* Large ring = "AI agent online and operating." Single element, layered glow. (R-22) */
+.sv-agent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+}
+.sv-agent-ring {
+  width: 148px; height: 148px;
+  border-radius: 50%;
+  border: 2px solid var(--cyan);
+  box-shadow:
+    0 0 0 10px rgba(25,217,255,0.07),
+    0 0 0 20px rgba(25,217,255,0.03),
+    0 0 48px rgba(25,217,255,0.20);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+}
+.sv-agent-icon { font-size: 2.5rem; line-height: 1; color: var(--cyan) }
+.sv-agent-label {
+  font-size: var(--text-xs);
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--cyan);
+}
+
+/* ── Visual 3: AI→Human handoff ── */
+.sv-handoff {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+}
+.sv-handoff-row {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+.sv-handoff-chip {
+  font-size: var(--text-xs);
+  font-weight: var(--weight-black);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  padding: .625rem 1.25rem;
+  border-radius: var(--radius-medium);
+  border: 1px solid;
+}
+.sv-handoff-chip--ai {
+  background: rgba(25,217,255,0.10);
+  border-color: rgba(25,217,255,0.35);
+  color: var(--cyan);
+}
+.sv-handoff-chip--human {
+  background: rgba(8,124,255,0.12);
+  border-color: rgba(8,124,255,0.40);
+  color: #60a5fa;
+}
+.sv-handoff-arrow {
+  font-size: 1.5rem;
+  color: var(--muted);
+}
+.sv-handoff-label {
+  font-size: var(--text-sm);
+  color: var(--muted);
+  text-align: center;
+  line-height: var(--lh-normal);
+}
+
+/* ── Visual 4: Scale bars ── */
+/* Four rising bars — represents growth across deployments. (R-22) */
+.sv-scale {
+  display: flex;
+  align-items: flex-end;
+  gap: .625rem;
+  height: 160px;
+}
+.sv-scale-bar {
+  width: 48px;
+  height: var(--h);
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-small) var(--radius-small) 0 0;
+}
+.sv-scale-bar--accent {
+  background: linear-gradient(180deg, var(--cyan), var(--blue));
+  border-color: var(--cyan);
+  box-shadow: 0 0 20px rgba(25,217,255,0.25);
+}
+
+/* ─── Contact section ────────────────────────────────────────────────────── */
+.contact-section { padding: 6rem 0; background: var(--surface) }
+.contact-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: start;
+}
+.contact-text h2 {
+  font-size: clamp(var(--text-2xl), 3.5vw, var(--text-3xl));
+  font-weight: var(--weight-black);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--ls-tight);
+  margin: 0 0 1rem;
+}
+.contact-text .lead {
+  font-size: var(--text-base);
+  color: var(--muted);
+  line-height: var(--lh-loose);
+  margin: 0 0 1rem;
+  max-width: 44ch;
+}
+.privacy-note {
+  font-size: var(--text-sm);
+  color: var(--muted);
+  line-height: var(--lh-normal);
+  margin: 0 0 2rem;
+}
+.contact-links { display: flex; flex-direction: column; gap: .75rem }
+.contact-link {
+  display: flex;
+  align-items: center;
+  gap: .625rem;
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  color: var(--muted);
+  transition: color .2s ease;
+}
+.contact-link:hover { color: var(--cyan) }
+.contact-link-icon { color: var(--cyan); flex-shrink: 0 }
+
+/* Form */
+.contact-form-wrap {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-large);
+  padding: 2rem;
+  box-shadow: 0 0 60px rgba(8,124,255,0.08);
+}
+.contact-form { display: flex; flex-direction: column; gap: 1.125rem }
+.field-label {
+  display: flex;
+  flex-direction: column;
+  gap: .375rem;
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  color: var(--text);
+}
+.field-required { color: var(--cyan) }
+.field-input {
+  padding: .75rem 1rem;
+  border-radius: var(--radius-small);
+  border: 1px solid var(--line);
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: var(--text-base);
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+.field-input::placeholder { color: #3a5570 }
+.field-input:focus {
+  outline: none;
+  border-color: var(--cyan);
+  box-shadow: 0 0 0 3px rgba(25,217,255,0.12);
+}
+textarea.field-input { resize: vertical }
+
+/* Honeypot — must stay hidden from real users */
+.hp {
+  position: absolute;
+  left: -9999px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ─── Closing CTA band ───────────────────────────────────────────────────── */
+/* Bookend glow at bottom-center mirrors hero's cinematic depth. (R-13)
+   Single CTA. Declarative h2. One conversion moment per page. */
+.cta-band {
+  background: var(--panel);
+  border-top: 1px solid var(--line);
+  padding: 7rem 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.cta-band::before {
+  content: '';
+  position: absolute;
+  bottom: -20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 70%;
+  background: radial-gradient(
+    ellipse at 50% 100%,
+    rgba(25,217,255,0.07) 0%,
+    transparent 65%
+  );
+  pointer-events: none;
+}
+.cta-band-inner { position: relative; z-index: 1 }
+.cta-band h2 {
+  font-size: clamp(var(--text-2xl), 4vw, var(--text-3xl));
+  font-weight: var(--weight-black);
+  letter-spacing: var(--ls-tight);
+  line-height: var(--lh-snug);
+  margin: 0 0 1rem;
+  color: var(--text);
+}
+.cta-band p {
+  font-size: var(--text-md);
+  color: var(--muted);
+  margin: 0 0 2.5rem;
+  line-height: var(--lh-normal);
+}
+
+/* ─── Footer ─────────────────────────────────────────────────────────────── */
+.footer {
+  border-top: 1px solid var(--line);
+  padding: 2.5rem 0;
+  font-size: var(--text-sm);
+  color: var(--muted);
+}
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: .875rem;
+}
+.footer-brand img {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.footer-name { font-weight: var(--weight-black); color: var(--text); font-size: var(--text-sm) }
+.footer-name b { color: var(--cyan) }
+.footer-tagline { font-size: var(--text-xs); color: var(--muted) }
+.footer-copy { font-size: var(--text-xs); color: var(--muted) }
+
+/* ─── Mobile ─────────────────────────────────────────────────────────────── */
+@media (max-width: 960px) {
+  .solutions-grid { grid-template-columns: repeat(2, 1fr) }
+  .sol-card--featured { grid-column: 1 / -1 }
+  .story-pair {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    padding: 3.5rem 0;
+  }
+  /* Critical: text always first on mobile regardless of pair flip */
+  .story-pair--flip .story-text   { order: 1 }
+  .story-pair--flip .story-visual { order: 2 }
+  .contact-inner {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  .highlights-inner {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem 1rem;
+  }
+  .highlight-divider { display: none }
+}
+@media (max-width: 720px) {
+  nav { display: none }
+  .hero { padding: 140px 5vw 80px }
+  .solutions-grid { grid-template-columns: 1fr }
+}
+@media (max-width: 540px) {
+  header { padding: 0 4vw }
+  .brand-name { font-size: .75rem }
+  .btn--small { display: none }
+  .hero { padding: 120px 5vw 60px }
+  .hero .lead { font-size: var(--text-base) }
+  .actions { flex-direction: column; align-items: stretch }
+  .actions .btn { text-align: center; justify-content: center }
+  .section { padding: 4rem 0 }
+  .story-section .section-head { padding: 4rem 0 2.5rem }
+  .story-pair { padding: 2.5rem 0 }
+  .highlights-inner { grid-template-columns: 1fr 1fr }
+  .cta-band { padding: 5rem 0 }
+  .sv-scale-bar { width: 36px }
+  .intelligenceField::before { left: 50%; top: 35%; width: 260px; height: 260px }
+  .aiCore { left: 50%; top: 35% }
+  .s1 { left: 25%; top: 22% }
+  .s2 { left: 72%; top: 22% }
+  .s3 { left: 72%; top: 45% }
+  .s4 { left: 27%; top: 48% }
+  .s5, .s6 { display: none }
+}
+@media (max-width: 400px) {
+  .highlights-inner { grid-template-columns: 1fr }
+  .footer-inner { flex-direction: column; align-items: flex-start }
+}
