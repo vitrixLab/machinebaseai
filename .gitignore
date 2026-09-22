@@ -1,0 +1,8 @@
+.env
+.env.*
+node_modules/
+venv/
+.ox/
+verify.py
+*.log
+.DS_Store

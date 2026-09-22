@@ -1,7 +1,391 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Machine Base AI | Intelligence Infrastructure</title><meta name="description" content="AI agents, automation, private systems and scalable AI infrastructure for business."><link rel="stylesheet" href="styles.css"></head><body>
-<header><a class="brand" href="#top"><img src="assets/logo.jpeg" alt="Machine Base AI"><span>MACHINE BASE <b>AI</b></span></a><nav><a href="#solutions">Solutions</a><a href="#how">How It Works</a><a href="#contact">AI Audit</a></nav><a class="btn small" href="#contact">GET STARTED</a></header>
-<main id="top"><section class="hero"><canvas id="tier3Canvas" aria-label="Interactive AI automation workflow visualization"></canvas><div class="intelligenceField" aria-hidden="true"><div class="aiCore"></div><i class="signal s1"></i><i class="signal s2"></i><i class="signal s3"></i><i class="signal s4"></i><i class="signal s5"></i><i class="signal s6"></i></div><div class="shade"></div><div class="heroContent"><p class="eyebrow">INTELLIGENCE INFRASTRUCTURE</p><h1>BUILD. AUTOMATE.<br><span>SCALE. GLOBALLY.</span></h1><p class="lead">Practical AI systems that generate leads, follow up faster, automate repetitive work and help businesses scale.</p><div class="actions"><a class="btn" href="#contact">GET A FREE AI AUTOMATION AUDIT</a><a class="btn ghost" href="tel:+12546440645">CALL KEITH</a><a class="btn ghost" href="https://api.whatsapp.com/send?phone=12546440645&text=Hi%20Keith%2C%20I%27m%20interested%20in%20Machine%20Base%20AI." target="_blank" rel="noopener">WHATSAPP KEITH</a></div></div></section>
-<section id="solutions" class="section"><p class="eyebrow">WHAT WE BUILD</p><h2>AI infrastructure that works inside real businesses.</h2><div class="grid"><article><h3>AI Agents</h3><p>Agents for lead response, qualification, customer support, research and internal workflows.</p></article><article><h3>AI Voice & Calling</h3><p>Automated calling, follow-up and appointment workflows with human handoff when needed.</p></article><article><h3>Lead & CRM Automation</h3><p>Capture, route, score and follow up with leads automatically so opportunities do not sit untouched.</p></article><article><h3>Private AI Systems</h3><p>Private/local AI and custom infrastructure for organizations that want more control of their systems and data.</p></article><article><h3>Custom Integrations</h3><p>Connect websites, CRM, messaging, calendars, forms and business software into one operating workflow.</p></article><article><h3>Scale Systems</h3><p>Reusable infrastructure designed to grow across teams, locations, campaigns and business verticals.</p></article></div></section>
-<section id="how" class="section dark"><p class="eyebrow">THE MACHINE BASE METHOD</p><h2>Traffic → AI → Human → Revenue</h2><div class="steps"><div><b>01</b><h3>Capture</h3><p>Ads, website, forms and inbound inquiries.</p></div><div><b>02</b><h3>Automate</h3><p>AI responds, qualifies, follows up and routes.</p></div><div><b>03</b><h3>Convert</h3><p>Human sales steps in when the opportunity is ready.</p></div><div><b>04</b><h3>Scale</h3><p>Track results and reuse the system across the business.</p></div></div></section>
-<section id="contact" class="section contact"><div><p class="eyebrow">FREE AI AUTOMATION AUDIT</p><h2>What could AI automate in your business?</h2><p class="lead">Tell us where your business is losing time, leads or opportunities. We’ll review it and contact you about practical ways AI can help.</p><p class="privacy">Your phone number is never displayed publicly. Use Call Keith or WhatsApp for immediate contact.</p></div><form action="send.php" method="post"><label>Name<input name="name" required></label><label>Business<input name="business"></label><label>Email<input name="email" type="email" required></label><label>Phone<input name="phone" type="tel" required></label><label>What do you want AI to help with?<select name="interest"><option>AI Agents</option><option>AI Voice / Calling</option><option>Lead Generation & Follow-Up</option><option>CRM / Workflow Automation</option><option>Private AI Infrastructure</option><option>Custom AI System</option><option>Not Sure — Audit My Business</option></select></label><label>Tell us about it<textarea name="message" rows="5"></textarea></label><input class="hp" name="website" tabindex="-1" autocomplete="off"><button class="btn" type="submit">REQUEST MY AI AUDIT</button></form></section></main>
-<footer><img src="assets/logo.jpeg" alt=""><p><b>Machine Base AI</b><br>Intelligence Infrastructure<br>Build • Automate • Scale • Globally</p><p>Powered by Machine Base AI</p></footer><script src="https://cdn.jsdelivr.net/npm/three@0.185.0/build/three.min.js"></script><script src="tier3.js"></script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Machine Base AI | Intelligence Infrastructure</title>
+<meta name="description" content="AI agents, automation, private systems and scalable AI infrastructure for business. Build. Automate. Scale. Globally.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
+<header id="top">
+  <a class="brand" href="#top" aria-label="Machine Base AI home">
+    <img src="assets/logo.jpeg" alt="Machine Base AI logo" width="44" height="44">
+    <span class="brand-name">MACHINE BASE <b>AI</b></span>
+  </a>
+  <nav aria-label="Main navigation">
+    <a href="#solutions">Solutions</a>
+    <a href="#how">How It Works</a>
+    <a href="#contact">AI Audit</a>
+  </nav>
+  <a class="btn btn--small" href="#contact">Get Started</a>
+</header>
+
+<main id="main-content">
+
+  <!-- ── Hero — Three.js canvas is the 3D focal point ──────────────────── -->
+  <!-- The existing tier3.js WebGL scene is a real 3D workflow visualization.
+       It IS the product concept made visible. Kept entirely. (R-22, C-5)
+       Design role: full-bleed atmospheric layer behind the hero text column. -->
+  <section class="hero" aria-label="Machine Base AI — Intelligence Infrastructure">
+    <canvas id="tier3Canvas" aria-hidden="true"></canvas>
+    <!-- CSS Intelligence Field fallback (shown when canvas unavailable) -->
+    <div class="intelligenceField" aria-hidden="true">
+      <div class="aiCore"></div>
+      <i class="signal s1"></i>
+      <i class="signal s2"></i>
+      <i class="signal s3"></i>
+      <i class="signal s4"></i>
+      <i class="signal s5"></i>
+      <i class="signal s6"></i>
+    </div>
+    <div class="shade" aria-hidden="true"></div>
+    <div class="heroContent">
+      <p class="eyebrow" data-reveal>Intelligence Infrastructure</p>
+      <h1 data-reveal data-delay="1">Build. Automate.<br><span>Scale. Globally.</span></h1>
+      <p class="lead" data-reveal data-delay="2">Practical AI systems that generate leads, follow up faster, automate repetitive work and help businesses scale without growing headcount.</p>
+      <div class="actions" data-reveal data-delay="3">
+        <a class="btn btn--primary" href="#contact">Get a Free AI Audit</a>
+        <a class="btn btn--ghost" href="tel:+12546440645">Call Keith</a>
+        <a class="btn btn--ghost" href="https://api.whatsapp.com/send?phone=12546440645&text=Hi%20Keith%2C%20I%27m%20interested%20in%20Machine%20Base%20AI." target="_blank" rel="noopener">WhatsApp Keith</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Highlights strip — real service metrics ───────────────────────── -->
+  <!-- Four facts about the service model: not invented deltas. (R-17, R-38) -->
+  <section class="highlights-strip" aria-label="Key capabilities" data-reveal>
+    <div class="wrap highlights-inner">
+      <div class="highlight">
+        <div class="highlight-num">6</div>
+        <div class="highlight-label">Service<br>verticals</div>
+      </div>
+      <div class="highlight-divider" aria-hidden="true"></div>
+      <div class="highlight">
+        <div class="highlight-num">AI</div>
+        <div class="highlight-label">Voice &amp; agent<br>automation</div>
+      </div>
+      <div class="highlight-divider" aria-hidden="true"></div>
+      <div class="highlight">
+        <div class="highlight-num">0</div>
+        <div class="highlight-label">Wasted leads from<br>slow follow-up</div>
+      </div>
+      <div class="highlight-divider" aria-hidden="true"></div>
+      <div class="highlight">
+        <div class="highlight-num">1</div>
+        <div class="highlight-label">Free audit to<br>start</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Solutions — What we build ─────────────────────────────────────── -->
+  <section id="solutions" class="section" aria-label="Solutions">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow">What we build</p>
+        <h2>AI infrastructure that works inside real businesses.</h2>
+        <p class="section-sub">Not demos. Not experiments. Production systems that plug into how your business already operates.</p>
+      </div>
+      <div class="solutions-grid">
+        <article class="sol-card sol-card--featured" data-reveal>
+          <div class="border-glow-layer" aria-hidden="true"></div>
+          <div class="border-glow-inner" aria-hidden="true"></div>
+          <div class="sol-icon" aria-hidden="true">&#9672;</div>
+          <h3>AI Agents</h3>
+          <p>Agents for lead response, qualification, customer support, research and internal workflows. Deployed and integrated into your existing stack.</p>
+        </article>
+        <article class="sol-card" data-reveal data-delay="1">
+          <div class="border-glow-layer" aria-hidden="true"></div>
+          <div class="border-glow-inner" aria-hidden="true"></div>
+          <div class="sol-icon" aria-hidden="true">&#9655;</div>
+          <h3>AI Voice &amp; Calling</h3>
+          <p>Automated calling, follow-up and appointment workflows with human handoff when the opportunity is ready.</p>
+        </article>
+        <article class="sol-card" data-reveal data-delay="2">
+          <div class="border-glow-layer" aria-hidden="true"></div>
+          <div class="border-glow-inner" aria-hidden="true"></div>
+          <div class="sol-icon" aria-hidden="true">&#9671;</div>
+          <h3>Lead &amp; CRM Automation</h3>
+          <p>Capture, route, score and follow up with leads automatically so opportunities do not sit untouched.</p>
+        </article>
+        <article class="sol-card" data-reveal data-delay="1">
+          <div class="border-glow-layer" aria-hidden="true"></div>
+          <div class="border-glow-inner" aria-hidden="true"></div>
+          <div class="sol-icon" aria-hidden="true">&#9670;</div>
+          <h3>Private AI Systems</h3>
+          <p>Private and local AI infrastructure for organizations that want more control of their systems and data. No third-party model access required.</p>
+        </article>
+        <article class="sol-card" data-reveal data-delay="2">
+          <div class="border-glow-layer" aria-hidden="true"></div>
+          <div class="border-glow-inner" aria-hidden="true"></div>
+          <div class="sol-icon" aria-hidden="true">&#9663;</div>
+          <h3>Custom Integrations</h3>
+          <p>Connect websites, CRM, messaging, calendars, forms and business software into one operating workflow.</p>
+        </article>
+        <article class="sol-card" data-reveal data-delay="3">
+          <div class="border-glow-layer" aria-hidden="true"></div>
+          <div class="border-glow-inner" aria-hidden="true"></div>
+          <div class="sol-icon" aria-hidden="true">&#9661;</div>
+          <h3>Scale Systems</h3>
+          <p>Reusable infrastructure designed to grow across teams, locations, campaigns and business verticals.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── How It Works — storytelling pairs ─────────────────────────────── -->
+  <!-- The Machine Base Method: Traffic → AI → Human → Revenue
+       4 stages presented as alternating text + visual pairs (RHYTHM 2) -->
+  <section id="how" class="story-section" aria-label="The Machine Base Method">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow">The Machine Base Method</p>
+        <h2>Traffic &rarr; AI &rarr; Human &rarr; Revenue</h2>
+        <p class="section-sub">A four-stage system that takes a lead from first contact to closed deal — with AI handling the speed work and humans handling the judgment calls.</p>
+      </div>
+
+      <!-- Stage 1: Capture -->
+      <div class="story-pair" data-reveal>
+        <div class="story-text">
+          <div class="story-num">01 &mdash; Capture</div>
+          <h3>Every channel feeds the system</h3>
+          <p>Ads, website, forms, inbound calls and organic inquiries are captured and unified. Nothing falls through the cracks because the system knows about every touchpoint from the first second.</p>
+        </div>
+        <div class="story-visual" aria-hidden="true">
+          <div class="sv-channels">
+            <div class="sv-channel sv-channel--active">
+              <div class="sv-channel-dot"></div>Ads
+            </div>
+            <div class="sv-channel sv-channel--active">
+              <div class="sv-channel-dot"></div>Website
+            </div>
+            <div class="sv-channel sv-channel--active">
+              <div class="sv-channel-dot"></div>Forms
+            </div>
+            <div class="sv-channel sv-channel--active">
+              <div class="sv-channel-dot"></div>Inbound Calls
+            </div>
+            <div class="sv-channel sv-channel--active">
+              <div class="sv-channel-dot"></div>Organic
+            </div>
+            <div class="sv-channel sv-channel--active">
+              <div class="sv-channel-dot"></div>Referrals
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stage 2: Automate — flipped -->
+      <div class="story-pair story-pair--flip" data-reveal>
+        <div class="story-visual" aria-hidden="true">
+          <div class="sv-agent">
+            <div class="sv-agent-ring">
+              <span class="sv-agent-icon">&#9672;</span>
+            </div>
+            <div class="sv-agent-label">AI Agent — live</div>
+          </div>
+        </div>
+        <div class="story-text">
+          <div class="story-num">02 &mdash; Automate</div>
+          <h3>AI responds, qualifies and follows up in seconds</h3>
+          <p>The agent handles first response, qualification questions, follow-up sequences and appointment scheduling — without waiting for a human to be available. Response time goes from hours to seconds.</p>
+        </div>
+      </div>
+
+      <!-- Stage 3: Convert -->
+      <div class="story-pair" data-reveal>
+        <div class="story-text">
+          <div class="story-num">03 &mdash; Convert</div>
+          <h3>Human steps in when the opportunity is ready</h3>
+          <p>AI routes the pre-qualified lead to your sales team at the right moment — with full context already captured. No cold calls. No chasing. Your team closes; the system does the preparation work.</p>
+        </div>
+        <div class="story-visual" aria-hidden="true">
+          <div class="sv-handoff">
+            <div class="sv-handoff-row">
+              <div class="sv-handoff-chip sv-handoff-chip--ai">AI</div>
+              <div class="sv-handoff-arrow">&#8594;</div>
+              <div class="sv-handoff-chip sv-handoff-chip--human">Human</div>
+            </div>
+            <div class="sv-handoff-label">Qualified lead transferred<br>with full context</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stage 4: Scale — flipped -->
+      <div class="story-pair story-pair--flip" data-reveal>
+        <div class="story-visual" aria-hidden="true">
+          <div class="sv-scale">
+            <div class="sv-scale-bar" style="--h:35%"></div>
+            <div class="sv-scale-bar" style="--h:55%"></div>
+            <div class="sv-scale-bar" style="--h:72%"></div>
+            <div class="sv-scale-bar sv-scale-bar--accent" style="--h:90%"></div>
+          </div>
+        </div>
+        <div class="story-text">
+          <div class="story-num">04 &mdash; Scale</div>
+          <h3>Track results and reuse the system across the business</h3>
+          <p>The infrastructure is built to be reused. Across teams, locations, campaigns and verticals. What works in one market is deployed in the next — without rebuilding from scratch every time.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── Contact / AI Audit form ────────────────────────────────────────── -->
+  <section id="contact" class="section contact-section" aria-label="Free AI Automation Audit">
+    <div class="wrap contact-inner">
+      <div class="contact-text" data-reveal>
+        <p class="eyebrow">Free AI Automation Audit</p>
+        <h2>What could AI automate in your business?</h2>
+        <p class="lead">Tell us where your business is losing time, leads or opportunities. We'll review it and contact you with practical ways AI can help.</p>
+        <p class="privacy-note">Your phone number is never displayed publicly. Use Call Keith or WhatsApp for immediate contact.</p>
+        <div class="contact-links">
+          <a class="contact-link" href="tel:+12546440645">
+            <span class="contact-link-icon" aria-hidden="true">&#9655;</span>
+            Call Keith directly
+          </a>
+          <a class="contact-link" href="https://api.whatsapp.com/send?phone=12546440645&text=Hi%20Keith%2C%20I%27m%20interested%20in%20Machine%20Base%20AI." target="_blank" rel="noopener">
+            <span class="contact-link-icon" aria-hidden="true">&#9671;</span>
+            WhatsApp Keith
+          </a>
+        </div>
+      </div>
+      <div class="contact-form-wrap" data-reveal data-delay="1">
+        <form class="contact-form" action="send.php" method="post" aria-label="AI audit request form">
+          <label class="field-label">
+            Name <span class="field-required" aria-label="required">*</span>
+            <input class="field-input" name="name" required autocomplete="name" placeholder="Your name">
+          </label>
+          <label class="field-label">
+            Business
+            <input class="field-input" name="business" autocomplete="organization" placeholder="Company or trade name">
+          </label>
+          <label class="field-label">
+            Email <span class="field-required" aria-label="required">*</span>
+            <input class="field-input" name="email" type="email" required autocomplete="email" placeholder="you@business.com">
+          </label>
+          <label class="field-label">
+            Phone <span class="field-required" aria-label="required">*</span>
+            <input class="field-input" name="phone" type="tel" required autocomplete="tel" placeholder="+1 (555) 000-0000">
+          </label>
+          <label class="field-label">
+            What do you want AI to help with?
+            <select class="field-input" name="interest">
+              <option>AI Agents</option>
+              <option>AI Voice / Calling</option>
+              <option>Lead Generation &amp; Follow-Up</option>
+              <option>CRM / Workflow Automation</option>
+              <option>Private AI Infrastructure</option>
+              <option>Custom AI System</option>
+              <option>Not Sure — Audit My Business</option>
+            </select>
+          </label>
+          <label class="field-label">
+            Tell us about it
+            <textarea class="field-input" name="message" rows="5" placeholder="Where is your business losing time, leads or opportunities?"></textarea>
+          </label>
+          <!-- Honeypot — hidden from real users, catches bots (R-32: tabindex=-1) -->
+          <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <button class="btn btn--primary btn--full" type="submit">Request My Free AI Audit</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Closing CTA band ───────────────────────────────────────────────── -->
+  <section class="cta-band" aria-label="Start your AI audit">
+    <div class="wrap cta-band-inner" data-reveal>
+      <h2>Ready to build your AI infrastructure?</h2>
+      <p>Start with the audit. We'll show you exactly where AI fits.</p>
+      <a class="btn btn--primary" href="#contact">Get a Free AI Audit</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <div class="footer-brand">
+      <img src="assets/logo.jpeg" alt="Machine Base AI" width="48" height="48">
+      <div>
+        <div class="footer-name"><b>Machine Base AI</b></div>
+        <div class="footer-tagline">Intelligence Infrastructure</div>
+      </div>
+    </div>
+    <div class="footer-copy">
+      Build &bull; Automate &bull; Scale &bull; Globally
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/three@0.185.0/build/three.min.js"></script>
+<script src="tier3.js"></script>
+<script>
+// ─── Scroll reveals — IntersectionObserver ────────────────────────────────────
+// R-19: entrance animation guides attention down the page. Respects
+// prefers-reduced-motion. Hero elements reveal on load; body sections via IO.
+(function() {
+  'use strict';
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var els = document.querySelectorAll('[data-reveal]');
+
+  if (reduceMotion) {
+    els.forEach(function(el) { el.classList.add('revealed'); });
+    return;
+  }
+
+  // Hero elements: reveal on load (not scroll-gated — they're already visible)
+  document.querySelectorAll('.hero [data-reveal]').forEach(function(el) {
+    setTimeout(function() { el.classList.add('revealed'); }, 80);
+  });
+
+  var io = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  els.forEach(function(el) {
+    if (!el.closest('.hero')) io.observe(el);
+  });
+})();
+</script>
+<script>
+// ─── Border Glow — pointer-tracking conic gradient on solutions cards ─────────
+// Technique: horizonx.so/tools/border-glow.
+// pointermove → atan2 angle → rotate conic-gradient toward pointer.
+// R-13: solutions cards only. R-19: prefers-reduced-motion guard.
+(function() {
+  'use strict';
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  document.querySelectorAll('.sol-card').forEach(function(card) {
+    var layer = card.querySelector('.border-glow-layer');
+    if (!layer) return;
+
+    card.addEventListener('pointermove', function(e) {
+      var rect = card.getBoundingClientRect();
+      var dx = e.clientX - (rect.left + rect.width  / 2);
+      var dy = e.clientY - (rect.top  + rect.height / 2);
+      var angle = Math.atan2(dy, dx) * (180 / Math.PI) + 90;
+      layer.style.setProperty('--bg-angle', angle.toFixed(1) + 'deg');
+    });
+
+    card.addEventListener('pointerleave', function() {
+      layer.style.removeProperty('--bg-angle');
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
